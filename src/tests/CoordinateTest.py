@@ -1,7 +1,7 @@
 import unittest
 
-from core.entities import Coordinate
-from core.exceptions import CoordinateOutOfTheBoardException
+from src.core.entities import Coordinate
+from src.core.exceptions import CoordinateOutOfTheBoardException
 
 
 class CoordinateTest(unittest.TestCase):

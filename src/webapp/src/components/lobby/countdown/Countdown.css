@@ -1,0 +1,45 @@
+.countdown {
+  position: fixed;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  background: rgba(178, 235, 242, 0.6);
+}
+
+.countdown-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.countdown-progress {
+  width: 80%;
+  height: 20px;
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 5px;
+  box-shadow: -1px 2px 5px rgb(100, 100, 100);
+  margin-top: 15px;
+}
+
+.countdown-progress-filler {
+  background: rgb(255, 87, 34);
+  height: 100%;
+  border-radius: 5px;
+}
+
+.countdown-control {
+  margin-top: 15px;
+}
+
+.countdown-control button {
+    margin: 0 8px;
+  }

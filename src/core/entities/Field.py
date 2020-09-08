@@ -1,4 +1,4 @@
-from core.enums import Symbol
+from src.core.enums import Symbol
 
 from .Coordinate import Coordinate
 

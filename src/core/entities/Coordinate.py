@@ -1,10 +1,10 @@
-from core.exceptions import CoordinateOutOfTheBoardException
+from src.core.exceptions import CoordinateOutOfTheBoardException
 
 
 class Coordinate:
 
     maximum = 2
-    lenght = 3
+    length = 3
 
     def __init__(self, y_axis: int, x_axis: int):
         if self._is_invalid_axis(x_axis) or self._is_invalid_axis(y_axis):

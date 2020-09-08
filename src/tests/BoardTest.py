@@ -1,8 +1,8 @@
 import unittest
 
-from core.entities import Board, Coordinate
-from core.enums import Symbol
-from core.exceptions import FieldAlreadyFilledException
+from src.core.entities import Board, Coordinate
+from src.core.enums import Symbol
+from src.core.exceptions import FieldAlreadyFilledException
 
 
 class BoardTest(unittest.TestCase):

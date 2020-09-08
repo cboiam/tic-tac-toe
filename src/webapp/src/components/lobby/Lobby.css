@@ -1,0 +1,10 @@
+.lobby {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.lobby-player {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}

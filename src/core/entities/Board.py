@@ -1,7 +1,7 @@
 from itertools import groupby
 
-from core.enums import Symbol
-from core.exceptions import FieldAlreadyFilledException
+from src.core.enums import Symbol
+from src.core.exceptions import FieldAlreadyFilledException
 
 from .Coordinate import Coordinate
 from .Field import Field
@@ -64,7 +64,7 @@ class Board:
 
         for field in line:
             symbols[field.symbol] += 1
-            if symbols[field.symbol] == Coordinate.lenght:
+            if symbols[field.symbol] == Coordinate.length:
                 return field.symbol
 
         return Symbol.Empty

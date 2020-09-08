@@ -1,0 +1,14 @@
+.login {
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    top: 0;
+}
+
+.login-title {
+    margin-top: 0;
+}
