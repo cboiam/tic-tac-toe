@@ -6,5 +6,5 @@ from abc import abstractmethod
 class Message:
 
     @abstractmethod
-    def parse_data(self, data: dict):
+    def parse_data(self, data):
         pass

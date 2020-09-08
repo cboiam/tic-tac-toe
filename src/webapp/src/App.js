@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Login from "./components/login/Login";
 import Lobby from "./components/lobby/Lobby";
+import Game from "./components/game/Game";
 // import { Socket } from "engine.io-client";
 import Socket from "socket.io-client";
 import { getVisibilityClass } from "./helpers/visibility";
@@ -12,6 +13,7 @@ export default class App extends React.Component {
     this.state = {
       connection: null,
       player: null,
+      showGame: false,
       showLogin: true,
       showLobby: false,
     };
@@ -39,6 +41,10 @@ export default class App extends React.Component {
     this.setState({ player: null, showLogin: true, showLobby: false });
   };
 
+  showGame = () => {
+    this.setState({ showGame: true, showLogin: false, showLobby: false });
+  };
+
   render() {
     if (!this.state.connection) {
       return null;
@@ -56,6 +62,12 @@ export default class App extends React.Component {
           player={this.state.player}
           logout={this.logout}
           visibility={getVisibilityClass(this.state.showLobby)}
+        />
+        <Game
+          connection={this.state.connection}
+          player={this.state.player}
+          showGame={this.showGame}
+          visibility={getVisibilityClass(this.state.showGame)}
         />
       </div>
     );

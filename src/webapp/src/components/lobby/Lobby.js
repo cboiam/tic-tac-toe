@@ -29,14 +29,14 @@ export default class Lobby extends React.Component {
       this.setState({ players });
     });
 
-    this.props.connection.on(`player_invite_receive`, (data) => {
+    this.props.connection.on(`invite_receive`, (data) => {
       const invite = JSON.parse(data);
 
       if (invite.sid !== this.props.player?.sid) {
         return;
       }
 
-      this.createInviteCountdown(data.player);
+      this.createInviteCountdown(invite.player);
     });
   }
 
@@ -48,20 +48,20 @@ export default class Lobby extends React.Component {
       },
     });
 
-    this.startCountdown();
+    this.startCountdown(player);
   };
 
-  startCountdown = () => {
+  startCountdown = (player) => {
     let timer = setTimeout(() => {
       const countdown = this.state.invite.countdown - 1;
-      this.setState({ invite: { countdown } });
+      this.setState({ invite: { countdown, player } });
 
       if (countdown === 0) {
         clearTimeout(timer);
         return;
       }
 
-      timer = this.startCountdown();
+      timer = this.startCountdown(player);
     }, 100);
   };
 
@@ -73,10 +73,43 @@ export default class Lobby extends React.Component {
     );
   };
 
-  invite = (sid) => {
-    this.props.connection.emit("player_invite_send", sid, () => {
-      this.createInviteCountdown(null);
+  resetInvite = () => {
+    this.setState({
+      invite: {
+        player: null,
+        countdown: 0,
+      },
     });
+  };
+
+  invite = (sid) => {
+    this.props.connection.emit("invite_send", sid, () => {
+      this.createInviteCountdown(null);
+      this.props.connection.on("invite_declined", (sid) => {
+        if (this.props.player.sid !== sid) {
+          return;
+        }
+
+        this.resetInvite();
+      });
+    });
+  };
+
+  acceptInvite = () => {
+    this.props.connection.emit(
+      "invite_accept",
+      this.state.invite.player.sid
+    );
+  };
+
+  declineInvite = () => {
+    this.props.connection.emit(
+      "invite_decline",
+      this.state.invite.player.sid,
+      () => {
+        this.resetInvite();
+      }
+    );
   };
 
   renderPlayer = (player) => {
@@ -104,6 +137,8 @@ export default class Lobby extends React.Component {
         <Countdown
           invite={this.state.invite}
           visibility={getVisibilityClass(this.showCountdown)}
+          accept={this.acceptInvite}
+          decline={this.declineInvite}
         />
       </div>
     );

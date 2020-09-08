@@ -16,3 +16,10 @@ class Player:
 
     def make_move(self, board: Board, coordinate: Coordinate):
         board.assign_field(self.symbol, coordinate)
+
+    def to_dict(self):
+        return {
+            "sid": self.sid,
+            "name": self.name,
+            "symbol": self.symbol
+        }

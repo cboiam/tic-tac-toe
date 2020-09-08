@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from src.webserver.messages import Message
+from src.webserver.messages import LobbyMessage
 
 
-class PlayerEnterMessage(Message):
+class PlayerEnterMessage(LobbyMessage):
 
     sid: str
     username: str

@@ -10,6 +10,6 @@ class Event:
         self.message = message
         self.handler = handler
 
-    def process(self, data: dict):
+    def process(self, data):
         self.message.parse_data(data)
         return self.handler.handle(self.message)
