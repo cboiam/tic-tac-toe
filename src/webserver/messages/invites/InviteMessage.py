@@ -3,7 +3,7 @@
 from src.webserver.messages import LobbyMessage
 
 
-class InviteSendMessage(LobbyMessage):
+class InviteMessage(LobbyMessage):
 
     sid: str
 

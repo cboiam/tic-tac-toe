@@ -1,0 +1,6 @@
+.game {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: calc(100vw - 40px);
+}

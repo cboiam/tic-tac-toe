@@ -1,0 +1,36 @@
+.chat {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.chat-message-input {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+}
+
+.chat-message-input input {
+  width: 100%;
+}
+
+.chat-message-input button {
+  width: 50px;
+}
+
+.chat-message {
+  text-align: left;
+}
+
+.chat-message-mine {
+  text-align: right;
+}
+
+.chat-message-text {
+  margin: 0;
+  margin-top: 15px;
+  display: inline-block;
+  padding: 3px 5px;
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 5px;
+  box-shadow: -1px 2px 5px rgba(100, 100, 100, 0.5);
+}

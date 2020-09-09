@@ -22,11 +22,9 @@ export default class App extends React.Component {
   componentDidMount() {
     const connection = Socket("ws://localhost:5000");
 
-    connection.on("connect", function () {
-      console.log("connected");
-
-      connection.on("close", function () {
-        console.log("disconnected");
+    connection.on("connect", () => {
+      connection.on("disconnect", () => {
+        this.setState({ player: null, showLogin: true, showLobby: false, showGame: false });
       });
     });
 
