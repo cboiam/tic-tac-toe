@@ -2,7 +2,7 @@
 
 from flask import Flask, request
 from flask_socketio import SocketIO
-from events import lobby_events
+from events import lobby_events, game_events
 
 server = Flask(__name__)
 websocket = SocketIO(server, cors_allowed_origins="*")
@@ -21,6 +21,7 @@ def disconnect():
 
 
 lobby_events.register_lobby_events(websocket)
+game_events.register_game_events(websocket)
 
 
 if __name__ == '__main__':

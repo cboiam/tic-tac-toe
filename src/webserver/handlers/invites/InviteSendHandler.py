@@ -4,12 +4,12 @@ import json
 from flask import request
 from flask_socketio import emit
 from src.webserver.handlers import Handler
-from src.webserver.messages.invites import InviteSendMessage
+from src.webserver.messages.invites import InviteMessage
 from src.webserver.models import lobby
 
 
 class InviteSendHandler(Handler):
-    def handle(self, message: InviteSendMessage):
+    def handle(self, message: InviteMessage):
         player = lobby.get_player(message.players, request.sid)
 
         invite = {

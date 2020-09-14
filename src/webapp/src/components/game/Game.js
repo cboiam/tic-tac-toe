@@ -2,6 +2,7 @@ import React from "react";
 import Board from "./board/Board";
 import Chat from "./chat/Chat";
 import Status from "./status/Status";
+import GameOver from "./gameOver/GameOver";
 import "./Game.css";
 
 export default class Game extends React.Component {
@@ -23,8 +24,6 @@ export default class Game extends React.Component {
       ) {
         this.props.showGame();
 
-        this.props.connection.emit("player_leave", this.props.player.sid);
-
         this.props.connection.emit("game_start", data, (data) => {
           const game = JSON.parse(data);
           const player = game.players.find(
@@ -43,11 +42,17 @@ export default class Game extends React.Component {
     const json = JSON.parse(data);
 
     game.board = json.board;
+    game.turn = json.turn;
+    game.winner = json.winner;
 
     this.setState({ game });
   };
 
   fieldClicked = (row, column) => {
+    if (this.state.game.winner) {
+      return;
+    }
+
     const movement = {
       sid: this.state.game.sid,
       player_sid: this.state.player.sid,
@@ -66,6 +71,12 @@ export default class Game extends React.Component {
     this.setState({ game });
   };
 
+  getWinner = () => {
+    return this.state.game.players.find(
+      (p) => p.sid === this.state.game.winner
+    );
+  };
+
   render() {
     if (!this.state.game) {
       return null;
@@ -79,7 +90,11 @@ export default class Game extends React.Component {
             player={this.state.player}
             fieldClicked={this.fieldClicked}
           />
-          <Status />
+          <Status
+            players={this.state.game.players}
+            player={this.state.player}
+            turn={this.state.game.turn}
+          />
         </div>
         <Chat
           connection={this.props.connection}
@@ -88,6 +103,7 @@ export default class Game extends React.Component {
           messages={this.state.game.chat}
           addMessage={this.addMessage}
         />
+        <GameOver winner={this.getWinner()} player={this.state.player} />
       </div>
     );
   }

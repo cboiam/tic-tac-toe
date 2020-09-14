@@ -11,7 +11,7 @@ def add_player(players: list, player: Player):
 
 
 def remove_player(players: list, sid: str):
-    player = list(filter(lambda x: x.sid == sid, players))[0]
+    player = get_player(players, sid)
     players.remove(player)
 
 

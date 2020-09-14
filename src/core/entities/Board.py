@@ -13,8 +13,8 @@ class Board:
         self.fields = []
 
     def assign_field(self, symbol: Symbol, coordinate: Coordinate):
-        existing_coordinate = list(filter(lambda x: x.coordinate.x_axis == coordinate.x_axis and
-                                                    x.coordinate.y_axis == coordinate.y_axis,
+        existing_coordinate = list(filter(lambda x: x.coordinate.column == coordinate.column and
+                                                    x.coordinate.row == coordinate.row,
                                           self.fields))
 
         if len(existing_coordinate) > 0:
@@ -23,10 +23,10 @@ class Board:
         self.fields.append(Field(symbol, coordinate))
 
     def get_winner(self):
-        winner = self._get_winner_at(lambda x: x.coordinate.y_axis)
+        winner = self._get_winner_at(lambda x: x.coordinate.row)
 
         if winner is Symbol.Empty:
-            winner = self._get_winner_at(lambda x: x.coordinate.x_axis)
+            winner = self._get_winner_at(lambda x: x.coordinate.column)
 
         if winner is Symbol.Empty:
             winner = self._get_winner_at_diagonal()
@@ -34,7 +34,8 @@ class Board:
         return winner
 
     def _get_winner_at(self, axis):
-        lines = groupby(self.fields, axis)
+        fields = sorted(self.fields, key=axis)
+        lines = groupby(fields, axis)
 
         for line, group in lines:
             winner = self._get_winner_at_line(list(group))
@@ -44,8 +45,8 @@ class Board:
         return Symbol.Empty
 
     def _get_winner_at_diagonal(self):
-        primary_diagonal = list(filter(lambda x: x.coordinate.x_axis == x.coordinate.y_axis, self.fields))
-        secondary_diagonal = list(filter(lambda x: x.coordinate.x_axis + x.coordinate.y_axis == Coordinate.maximum, self.fields))
+        primary_diagonal = list(filter(lambda x: x.coordinate.column == x.coordinate.row, self.fields))
+        secondary_diagonal = list(filter(lambda x: x.coordinate.column + x.coordinate.row == Coordinate.maximum, self.fields))
 
         winner = self._get_winner_at_line(primary_diagonal)
 
@@ -68,3 +69,14 @@ class Board:
                 return field.symbol
 
         return Symbol.Empty
+
+    def to_dict(self):
+        fields = []
+
+        for field in self.fields:
+            fields.append(field.to_dict())
+
+        return {
+            "fields": fields,
+            "size": Coordinate.length
+        }

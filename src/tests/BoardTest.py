@@ -41,7 +41,9 @@ class BoardTest(unittest.TestCase):
     def test_get_winner_returns_cross_when_row_filled(self):
         board = Board()
         board.assign_field(Symbol.Cross, Coordinate(0, 0))
+        board.assign_field(Symbol.Nought, Coordinate(1, 0))
         board.assign_field(Symbol.Cross, Coordinate(0, 1))
+        board.assign_field(Symbol.Nought, Coordinate(1, 1))
         board.assign_field(Symbol.Cross, Coordinate(0, 2))
 
         self.assertEqual(Symbol.Cross, board.get_winner())

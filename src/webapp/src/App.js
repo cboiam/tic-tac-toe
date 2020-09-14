@@ -43,6 +43,10 @@ export default class App extends React.Component {
     this.setState({ showGame: true, showLogin: false, showLobby: false });
   };
 
+  exitGame = () => {
+    this.setState({ showGame: false, showLogin: false, showLobby: true });
+  }
+
   render() {
     if (!this.state.connection) {
       return null;
@@ -65,6 +69,7 @@ export default class App extends React.Component {
           connection={this.state.connection}
           player={this.state.player}
           showGame={this.showGame}
+          exitGame={this.exitGame}
           visibility={getVisibilityClass(this.state.showGame)}
         />
       </div>

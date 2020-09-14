@@ -25,17 +25,17 @@ def player_leave(sid: str):
 
 
 def invite_send(sid: str):
-    event = Event(InviteSendMessage(_players), InviteSendHandler())
+    event = Event(InviteMessage(_players), InviteSendHandler())
     event.process(sid)
 
 
 def invite_accept(sid: str):
-    event = Event(InviteAcceptMessage(_players), InviteAcceptHandler())
+    event = Event(InviteMessage(_players), InviteAcceptHandler())
     event.process(sid)
 
 
 def invite_decline(sid: str):
-    event = Event(InviteDeclineMessage(_players), InviteDeclineHandler())
+    event = Event(InviteMessage(_players), InviteDeclineHandler())
     event.process(sid)
 
 

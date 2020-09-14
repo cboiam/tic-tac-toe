@@ -21,5 +21,12 @@ class Player:
         return {
             "sid": self.sid,
             "name": self.name,
-            "symbol": self.symbol
+            "symbol": {
+                "name": self.symbol.name,
+                "value": self.symbol.value
+            }
         }
+
+    @staticmethod
+    def from_dict(player):
+        return Player(player["sid"], player["name"])

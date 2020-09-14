@@ -6,13 +6,19 @@ class Coordinate:
     maximum = 2
     length = 3
 
-    def __init__(self, y_axis: int, x_axis: int):
-        if self._is_invalid_axis(x_axis) or self._is_invalid_axis(y_axis):
-            raise CoordinateOutOfTheBoardException(x_axis, y_axis)
+    def __init__(self, row: int, column: int):
+        if self._is_invalid_axis(column) or self._is_invalid_axis(row):
+            raise CoordinateOutOfTheBoardException(row, column)
 
-        self.y_axis = y_axis
-        self.x_axis = x_axis
+        self.row = row
+        self.column = column
 
     @staticmethod
     def _is_invalid_axis(axis: int):
         return axis < 0 or axis >= 3
+
+    def to_dict(self):
+        return {
+            "row": self.row,
+            "column": self.column
+        }
