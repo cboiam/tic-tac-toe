@@ -1,2 +1,3 @@
 from .GameStartHandler import GameStartHandler
 from .GameMovementSendHandler import GameMovementSendHandler
+from .GameOverHandler import GameOverHandler

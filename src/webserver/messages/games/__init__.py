@@ -1,2 +1,3 @@
 from .GameStartMessage import GameStartMessage
 from .GameMovementSendMessage import GameMovementSendMessage
+from .GameOverMessage import GameOverMessage

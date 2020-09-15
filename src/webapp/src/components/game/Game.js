@@ -78,6 +78,7 @@ export default class Game extends React.Component {
   };
 
   exitGame = () => {
+    this.props.connection.emit("game_over", this.state.game.sid);
     this.setState({
       game: null,
       player: null,

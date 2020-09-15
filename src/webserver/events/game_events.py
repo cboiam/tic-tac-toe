@@ -31,7 +31,12 @@ def game_movement_send(data):
     event.process(json_data)
 
 
+def game_over(sid):
+    event = Event(GameOverMessage(_games), GameOverHandler())
+    event.process(sid)
+
 def register_game_events(websocket: SocketIO):
     websocket.on_event("game_start", game_start)
     websocket.on_event("game_message_send", game_message_send)
     websocket.on_event("game_movement_send", game_movement_send)
+    websocket.on_event("game_over", game_over)
