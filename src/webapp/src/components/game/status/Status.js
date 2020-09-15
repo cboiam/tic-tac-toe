@@ -1,4 +1,5 @@
 import React from "react";
+import "./Status.css"
 
 export default (props) => {
   const player = props.players.find((p) => p.sid === props.turn);

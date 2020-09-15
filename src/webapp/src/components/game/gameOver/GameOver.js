@@ -1,4 +1,5 @@
 import React from "react";
+import "./GameOver.css";
 
 export default (props) => {
   if (!props.winner) {
@@ -8,9 +9,13 @@ export default (props) => {
   const label =
     props.winner.sid === props.player.sid ? "You won!" : "You lose!";
 
+  setTimeout(props.exit, 3000);
+
   return (
     <div className="game-over">
-      <div>{label}</div>
+      <div className="game-over-modal">
+        <div>{label}</div>
+      </div>
     </div>
   );
 };

@@ -1,14 +1,23 @@
 .login {
-    position: fixed;
     display: flex;
-    width: calc(100vw - 40px);
-    height: 100vh;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     left: 0;
     top: 0;
+    color: #ffffff;
 }
 
 .login-title {
     margin-top: 0;
+}
+
+.login-input {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.login-button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
 }

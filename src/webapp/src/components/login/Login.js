@@ -36,11 +36,12 @@ export default class extends React.Component {
             <form onSubmit={this.submit}>
               <p>Enter your name to start</p>
               <input
+                className="input login-input"
                 type="text"
                 value={this.state.username}
                 onChange={this.updateUsername}
               />
-              <button>Start</button>
+              <button className="button login-button">Start</button>
             </form>
           </div>
         </div>

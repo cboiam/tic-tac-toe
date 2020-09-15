@@ -77,6 +77,15 @@ export default class Game extends React.Component {
     );
   };
 
+  exitGame = () => {
+    this.setState({
+      game: null,
+      player: null,
+    });
+
+    this.props.exitGame();
+  };
+
   render() {
     if (!this.state.game) {
       return null;
@@ -84,7 +93,7 @@ export default class Game extends React.Component {
 
     return (
       <div className={`game ${this.props.visibility}`}>
-        <div>
+        <div className="game-board">
           <Board
             board={this.state.game.board}
             player={this.state.player}
@@ -96,14 +105,20 @@ export default class Game extends React.Component {
             turn={this.state.game.turn}
           />
         </div>
-        <Chat
-          connection={this.props.connection}
-          sid={this.state.game.sid}
+        <div className="game-chat">
+          <Chat
+            connection={this.props.connection}
+            sid={this.state.game.sid}
+            player={this.state.player}
+            messages={this.state.game.chat}
+            addMessage={this.addMessage}
+          />
+        </div>
+        <GameOver
+          winner={this.getWinner()}
           player={this.state.player}
-          messages={this.state.game.chat}
-          addMessage={this.addMessage}
+          exit={this.exitGame}
         />
-        <GameOver winner={this.getWinner()} player={this.state.player} />
       </div>
     );
   }

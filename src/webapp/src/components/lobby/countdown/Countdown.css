@@ -7,7 +7,7 @@
   align-items: center;
   left: 0;
   top: 0;
-  background: rgba(178, 235, 242, 0.6);
+  background: rgba(200, 200, 200, 0.6);
 }
 
 .countdown-modal {
@@ -31,7 +31,7 @@
 }
 
 .countdown-progress-filler {
-  background: rgb(255, 87, 34);
+  background: #ff5733;
   height: 100%;
   border-radius: 5px;
 }

@@ -8,8 +8,8 @@ export default (props) => {
 
   const controls = props.invite.player ? (
     <div className="countdown-control">
-      <button onClick={props.accept}>Accept</button>
-      <button onClick={props.decline}>Decline</button>
+      <button className="button" onClick={props.accept}>Accept</button>
+      <button className="button" onClick={props.decline}>Decline</button>
     </div>
   ) : null;
 

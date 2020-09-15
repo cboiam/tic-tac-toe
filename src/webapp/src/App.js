@@ -53,7 +53,7 @@ export default class App extends React.Component {
     }
 
     return (
-      <div className="App">
+      <div className="app">
         <Login
           connection={this.state.connection}
           login={this.login}

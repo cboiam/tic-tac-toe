@@ -1,0 +1,22 @@
+.game-over {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: rgba(200, 200, 200, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+}

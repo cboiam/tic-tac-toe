@@ -1,3 +1,13 @@
-.App {
+.app {
   text-align: center;
+  width: calc(100vh - 40px);
+  max-width: calc(100vw - 40px);
+  height: calc(100vh - 40px);
+  max-height: calc(100vh - 40px);
+  border-radius: 20px;
+  background: #900c3f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }

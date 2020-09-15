@@ -44,27 +44,46 @@ export default class Chat extends React.Component {
     );
   };
 
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  };
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   componentDidMount() {
     this.props.connection.on("game_message_sent", (data) => {
       const message = JSON.parse(data);
       this.props.addMessage(message);
     });
+    this.scrollToBottom();
   }
 
   render() {
     return (
       <div className="chat">
-        <div className="chat-messages">
-          {this.props.messages.map(this.renderMessage)}
+        <div className="chat-messages-container">
+          <div className="chat-messages">
+            {this.props.messages.map(this.renderMessage)}
+            <div
+              ref={(el) => {
+                this.messagesEnd = el;
+              }}
+            ></div>
+          </div>
         </div>
         <div className="chat-message-input">
           <input
+            className="input"
             onKeyDown={this.onKeyDown}
             type="text"
             value={this.state.message}
             onChange={this.updateMessage}
           />
-          <button onClick={this.sendMessage}>Send</button>
+          <button className="button" onClick={this.sendMessage}>
+            Send
+          </button>
         </div>
       </div>
     );

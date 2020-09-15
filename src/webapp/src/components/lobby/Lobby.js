@@ -53,7 +53,7 @@ export default class Lobby extends React.Component {
 
   startCountdown = (player) => {
     let timer = setTimeout(() => {
-      const countdown = this.state.invite.countdown - 1;
+      const countdown = this.state.invite.countdown - 2;
       this.setState({ invite: { countdown, player } });
 
       if (countdown === 0) {
@@ -96,10 +96,7 @@ export default class Lobby extends React.Component {
   };
 
   acceptInvite = () => {
-    this.props.connection.emit(
-      "invite_accept",
-      this.state.invite.player.sid
-    );
+    this.props.connection.emit("invite_accept", this.state.invite.player.sid);
   };
 
   declineInvite = () => {
@@ -117,7 +114,9 @@ export default class Lobby extends React.Component {
       <div className="lobby-player" key={player.sid}>
         <div>{player.name}</div>
         <div>
-          <button onClick={() => this.invite(player.sid)}>Invite</button>
+          <button className="button" onClick={() => this.invite(player.sid)}>
+            Invite
+          </button>
         </div>
       </div>
     );
@@ -128,8 +127,11 @@ export default class Lobby extends React.Component {
   render() {
     return (
       <div className={`lobby ${this.props.visibility}`}>
-        <div>
-          <button onClick={this.logout}>Leave</button>
+        <div className="lobby-current-player">
+          <div>{this.props.player?.name}</div>
+          <button className="button" onClick={this.logout}>
+            Leave
+          </button>
         </div>
         {this.state.players
           .filter((p) => p.sid !== this.props.player?.sid)

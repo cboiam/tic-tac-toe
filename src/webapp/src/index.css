@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 20px;
+  background: #c70039;
 }
 
 code {
@@ -15,4 +16,22 @@ code {
 
 .hidden {
   display: none !important;
+}
+
+.button {
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  background: #ff5733;
+  padding: 6px 12px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.input {
+  border: none;
+  outline: none;
+  padding: 5px 12px;
+  border-radius: 8px;
 }
