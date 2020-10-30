@@ -17,7 +17,7 @@ $ python -m src.webserver.app
 To start the frontend go to `src/webapp` and use the command:
 
 ```
-npm start
+$ npm start
 ```
 
 Then access http://localhost:3000/ to see the app running.
