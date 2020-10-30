@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
-from models import lobby
+from src.webserver.models import lobby
 from flask_socketio import join_room, emit
 from src.webserver.messages.players import PlayerEnterMessage
 from src.webserver.handlers import Handler

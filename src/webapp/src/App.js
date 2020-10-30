@@ -3,7 +3,6 @@ import "./App.css";
 import Login from "./components/login/Login";
 import Lobby from "./components/lobby/Lobby";
 import Game from "./components/game/Game";
-// import { Socket } from "engine.io-client";
 import Socket from "socket.io-client";
 import { getVisibilityClass } from "./helpers/visibility";
 

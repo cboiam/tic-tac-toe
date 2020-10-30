@@ -2,7 +2,7 @@
 
 from flask import Flask, request
 from flask_socketio import SocketIO
-from events import lobby_events, game_events
+from src.webserver.events import lobby_events, game_events
 
 server = Flask(__name__)
 websocket = SocketIO(server, cors_allowed_origins="*")
