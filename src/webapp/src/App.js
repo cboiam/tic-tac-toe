@@ -6,6 +6,9 @@ import Game from "./components/game/Game";
 import Socket from "socket.io-client";
 import { getVisibilityClass } from "./helpers/visibility";
 
+const host = process.env.REACT_APP_SERVER_HOST;
+const path = process.env.REACT_APP_SERVER_PATH;
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +22,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    const connection = Socket("ws://localhost:5000");
+    const connection = Socket(host, { path });
 
     connection.on("connect", () => {
       connection.on("disconnect", () => {
